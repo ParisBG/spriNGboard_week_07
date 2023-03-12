@@ -1,31 +1,29 @@
 ﻿#include <stdlib.h>
 #include "Game.h"
 
-static bool notAWinner;
+//Global variables rarely a good idea
+//static bool notAWinner;
 
-int main()
-{
+int main(){
 
+  bool notAWinner;
 	srand(time(NULL));
 	Game aGame;
 
-	aGame.add("Chet");
-	aGame.add("Pat");
-	aGame.add("Sue");
+	aGame.add("AOT");
+	aGame.add("FMA");
+	aGame.add("DN");
 
-	do
-	{
-
+	do {
 		aGame.roll(rand() % 5 + 1);
-
-		if (rand() % 9 == 7)
-		{
+    
+    //Increased probability of getting wrong answer
+		if (rand() % 9 < 4){
 			notAWinner = aGame.wrongAnswer();
-		}
-		else
-		{
+		} else {
 			notAWinner = aGame.wasCorrectlyAnswered();
 		}
+
 	} while (notAWinner);
 
 }

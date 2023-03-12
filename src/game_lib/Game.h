@@ -1,48 +1,47 @@
+#pragma once
 #include <iostream>
 #include <list>
 #include <vector>
 using namespace std;
 
-#ifndef GAME_H_
-#define GAME_H_
-
 class Game{
 
-		private:
-			vector<string> players;
-
-			int places[6];
-			int purses[6];
-
-			bool inPenaltyBox[6];
-
-			list<string> popQuestions;
-			list<string> scienceQuestions;
-			list<string> sportsQuestions;
-			list<string> rockQuestions;
-
-			unsigned int currentPlayer;
-			bool isGettingOutOfPenaltyBox;
-
-public:
-	Game();
-	string createRockQuestion(int index);
-	bool isPlayable();
-	bool add(string playerName);
-
-	int howManyPlayers();
-	void roll(int roll);
-
 	private:
-		void askQuestion();
+    //Local variables
 		string currentCategory();
+    unsigned int currentPlayer;
+		bool isGettingOutOfPenaltyBox;
+    
+    //static arrays	
+    int places[6];
+		int purses[6];
+    bool inPenaltyBox[6];
+	  
+    //Dynamic Array
+    vector<string> players;
+    
+    //Liked Lists
+    list<string> popQuestions;
+		list<string> scienceQuestions;
+	  list<string> sportsQuestions;
+		list<string> rockQuestions;
+    
+    //Functions
+    bool didPlayerWin();
+		void askQuestion();
 
-				public:
-					bool wasCorrectlyAnswered();
-					bool wrongAnswer();
+  public:
+	  //Constructor
+    Game();
+    
+    //Functions
+	  int howManyPlayers();
+		bool wasCorrectlyAnswered();
+		bool wrongAnswer();
+	  bool isPlayable();
+	  bool add(string playerName);
+	  void roll(int roll);
+	  string createRockQuestion(int index);
 
-private:
-	bool didPlayerWin();
 };
 
-#endif /* GAME_H_ */
