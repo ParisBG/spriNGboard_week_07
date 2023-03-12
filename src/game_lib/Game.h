@@ -31,7 +31,6 @@ class Game{
 		void askQuestion();
 
   public:
-	  //Constructor
     Game();
     
     //Functions
